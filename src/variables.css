@@ -94,12 +94,18 @@
     outline: none;
   }
   
-  .ql-variables-item-text .title {
+  .ql-variables-item-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  
+  .ql-variables-item-title {
     font-weight: 600;
     line-height: 1.2;
   }
 
-  .ql-variables-item-text .desc {
+  .ql-variables-item-description {
     font-size: 12px;
     opacity: .75;
     margin-top: 2px;

@@ -17,6 +17,8 @@ A Quill.js module that adds a variable picker dropdown to the toolbar, allowing 
 npm install quill-variables-module
 ```
 
+**Note**: This module requires Quill.js v2.0.0 or higher. Make sure you're using the correct version of Quill in your project.
+
 ## Usage
 
 ### Basic Setup
@@ -71,7 +73,7 @@ const quill = new Quill('#editor', {
     variables: {
       variables: variables,
       placeholder: 'Insert Variable',
-      token: { open: '{{', close: '}}' }
+      token: { open: '{{', close: '}}' } // Default token style
     }
   }
 });
@@ -92,11 +94,44 @@ const quill = new Quill('#editor', {
       variables: variables,
       placeholder: 'Insert Variable',
       includeParentNodes: true, // Allow inserting parent nodes
-      token: (path: string) => `\${${path}}`, // Custom token function
+      token: { open: '${', close: '}' }, // Different token style
       icon: '<svg>...</svg>' // Custom SVG icon
     }
   }
 });
+```
+
+### Token Formatting Examples
+
+The `token` option supports two formats for customizing how variables are inserted:
+
+#### Object Format (Simple)
+```typescript
+// Default style: {{variable}}
+token: { open: '{{', close: '}}' }
+
+// Template literal style: ${variable}
+token: { open: '${', close: '}' }
+
+// Bracket style: [variable]
+token: { open: '[', close: ']' }
+```
+
+#### Function Format (Complete Control)
+```typescript
+// Custom formatting with validation
+token: (path: string) => {
+  if (path.includes('user.')) {
+    return `{{${path}}}`; // User variables with curly braces
+  }
+  return `$${path}`; // Others with dollar sign
+}
+
+// Simple function format
+token: (path: string) => `[${path}]`
+
+// With additional formatting
+token: (path: string) => `{{ ${path.toUpperCase()} }}`
 ```
 
 ### Programmatic Usage
@@ -130,10 +165,15 @@ interface VariablePickerOptions {
   token?: {                          // Optional: Token formatting
     open?: string;                   // Opening token (default: '{{')
     close?: string;                  // Closing token (default: '}}')
-  } | ((path: string) => string);    // Or custom function
+  } | ((path: string) => string);    // Or custom function for complete control
   icon?: string;                     // Optional: Custom SVG icon (default: curly braces icon)
 }
 ```
+
+**Token Formatting Details:**
+- **Object format**: Simple `{ open: '{{', close: '}}' }` for basic token wrapping
+- **Function format**: `(path: string) => string` for custom formatting logic
+- **Default**: `{{variable}}` style if no token option is provided
 
 ### VariableTree Structure
 
@@ -181,6 +221,17 @@ The module includes default CSS styles. You can customize the appearance by over
 
 - Modern browsers with ES2018 support
 - Requires Quill.js v2.0.0 or higher
+
+## Examples
+
+### Basic Variable Insertion
+When you select "First Name" from the user section, it inserts: `{{user.first_name}}`
+
+### Custom Token Styles
+- **Default**: `{{user.first_name}}`
+- **Template literals**: `${user.first_name}`
+- **Brackets**: `[user.first_name]`
+- **Custom function**: `{{ USER.FIRST_NAME }}` (uppercase with spaces)
 
 ## License
 
