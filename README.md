@@ -156,7 +156,7 @@ const quill = new Quill('#editor', {
   modules: {
     variables: {
       variables: variables,
-      icon: `<svg width="16" height="16" viewBox="0 0 24 24">
+      icon: `<svg width="16" height="16" viewBox="0 0 24 24" class="ql-stroke">
         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
       </svg>`
     }
@@ -164,7 +164,7 @@ const quill = new Quill('#editor', {
 });
 ```
 
-The icon should be an SVG element with appropriate sizing (recommended 16x16 or 24x24 viewBox). The SVG will inherit the text color via `currentColor`.
+The icon should be an SVG element with appropriate sizing (recommended 16x16 or 24x24 viewBox). The SVG will inherit the text color via `currentColor`. For proper Quill toolbar styling, include the `ql-stroke` class on the SVG element.
 
 ## Styling
 
@@ -184,4 +184,4 @@ The module includes default CSS styles. You can customize the appearance by over
 
 ## License
 
-MIT
+BSD-3-Clause

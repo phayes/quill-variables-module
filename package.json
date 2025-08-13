@@ -1,7 +1,7 @@
 {
   "name": "quill-variables-module",
   "version": "1.0.0",
-  "description": "A Quill.js module for inserting variables with a dropdown picker",
+  "description": "A Quill.js (version 2) module for inserting placeholder {{variables}}",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -17,8 +17,8 @@
     "dropdown",
     "typescript"
   ],
-  "author": "OpticalGym",
-  "license": "MIT",
+  "author": "Patrick Hayes",
+  "license": "BSD-3-Clause",
   "peerDependencies": {
     "quill": "^2.0.0"
   },
@@ -31,14 +31,15 @@
     "dist",
     "src",
     "README.md",
-    "example.html"
+    "example.html",
+    "LICENSE"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/opticalgym/quill-variables-module.git"
+    "url": "https://github.com/phayes/quill-variables-module.git"
   },
   "bugs": {
-    "url": "https://github.com/opticalgym/quill-variables-module/issues"
+    "url": "https://github.com/phayes/quill-variables-module/issues"
   },
-  "homepage": "https://github.com/opticalgym/quill-variables-module#readme"
+  "homepage": "https://github.com/phayes/quill-variables-module#readme"
 }

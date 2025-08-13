@@ -38,7 +38,7 @@ const DEFAULTS: Required<Omit<VariablePickerOptions, 'variables'>> = {
   includeParentNodes: false,
   placeholder: 'Variables',
   token: { open: '{{', close: '}}' },
-  icon: `<svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.5 5H9a2 2 0 0 0-2 2v2c0 1-.6 3-3 3 1 0 3 .6 3 3v2a2 2 0 0 0 2 2h.5m5-14h.5a2 2 0 0 1 2 2v2c0 1 .6 3 3 3-1 0-3 .6-3 3v2a2 2 0 0 1-2 2h-.5"/></svg>`,
+  icon: `<svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="ql-stroke"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.5 5H9a2 2 0 0 0-2 2v2c0 1-.6 3-3 3 1 0 3 .6 3 3v2a2 2 0 0 0 2 2h.5m5-14h.5a2 2 0 0 1 2 2v2c0 1 .6 3 3 3-1 0-3 .6-3 3v2a2 2 0 0 1-2 2h-.5"/></svg>`,
 };
 
 class Variables {
@@ -47,7 +47,7 @@ class Variables {
 
   // DOM
   private toolbarEl!: HTMLElement;
-  private rootEl!: HTMLSpanElement;   // <span class="ql-formats ql-variable-picker">
+  private rootEl!: HTMLSpanElement;   // <span class="ql-formats ql-variables-picker">
   private buttonEl!: HTMLSpanElement;
   private menuEl!: HTMLDivElement;
   private itemsEls: HTMLSpanElement[] = [];
@@ -141,20 +141,20 @@ class Variables {
   private buildUi() {
     // container group in toolbar
     this.rootEl = document.createElement('span');
-    this.rootEl.className = 'ql-formats ql-variable-picker';
+    this.rootEl.className = 'ql-formats ql-variables-picker';
 
     // button
     this.buttonEl = document.createElement('span');
-    this.buttonEl.className = 'ql-variable-button';
+    this.buttonEl.className = 'ql-variables-button';
     this.buttonEl.setAttribute('aria-haspopup', 'true');
     this.buttonEl.setAttribute('aria-expanded', 'false');
     this.buttonEl.setAttribute('title', this.options.placeholder);
     // Use configurable icon
-    this.buttonEl.innerHTML = `<span class="ql-variable-icon">${this.options.icon}</span><span class="ql-variable-label">${this.options.placeholder}</span>`;
+    this.buttonEl.innerHTML = `<span class="ql-variables-icon">${this.options.icon}</span><span class="ql-variables-label">${this.options.placeholder}</span>`;
 
     // menu
     this.menuEl = document.createElement('div');
-    this.menuEl.className = 'ql-variable-menu';
+    this.menuEl.className = 'ql-variables-menu ql-tooltip';
     this.menuEl.setAttribute('role', 'menu');
     this.menuEl.hidden = true;
 
@@ -265,7 +265,6 @@ class Variables {
 
     // Ungrouped section (only if any)
     if (ungrouped.length) {
-      frag.appendChild(this.sectionTitle('General'));
       for (const item of ungrouped) {
         frag.appendChild(this.createItemButton(item));
       }
@@ -283,7 +282,7 @@ class Variables {
 
     // remove trailing divider
     const last = frag.lastChild as HTMLElement;
-    if (last?.classList?.contains('ql-variable-divider')) {
+    if (last?.classList?.contains('ql-variables-divider')) {
       frag.removeChild(last);
     }
 
@@ -292,20 +291,20 @@ class Variables {
 
   private sectionTitle(text: string) {
     const el = document.createElement('div');
-    el.className = 'ql-variable-group-title';
+    el.className = 'ql-variables-group-title';
     el.textContent = text;
     return el;
   }
 
   private sectionDivider() {
     const el = document.createElement('div');
-    el.className = 'ql-variable-divider';
+    el.className = 'ql-variables-divider';
     return el;
   }
 
   private createItemButton(item: LeafItem) {
     const btn = document.createElement('span');
-    btn.className = 'ql-variable-item';
+    btn.className = 'ql-variables-item';
     btn.setAttribute('role', 'menuitem');
     btn.setAttribute('data-path', item.path);
     btn.title = item.description || item.title;
@@ -313,16 +312,16 @@ class Variables {
     // layout:
     // [title + description]  [{{token}}]
     const left = document.createElement('div');
-    left.className = 'ql-variable-item-text';
+    left.className = 'ql-variables-item-text';
 
     const t = document.createElement('div');
-    t.className = 'ql-variable-item-title';
+    t.className = 'ql-variables-item-title';
     t.textContent = item.title;
     left.appendChild(t);
 
     if (item.description) {
       const d = document.createElement('div');
-      d.className = 'ql-variable-item-description';
+      d.className = 'ql-variables-item-description';
       d.textContent = item.description;
       left.appendChild(d);
     }
