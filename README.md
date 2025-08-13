@@ -226,7 +226,3 @@ When you select "First Name" from the user section, it inserts: `{{user.first_na
 - **Template literals**: `${user.first_name}`
 - **Brackets**: `[user.first_name]`
 - **Custom function**: `{{ USER.FIRST_NAME }}` (uppercase with spaces)
-
-## License
-
-BSD-3-Clause
