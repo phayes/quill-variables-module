@@ -87,7 +87,6 @@ const quill = new Quill('#editor', {
     toolbar: {
       container: [
         ['bold', 'italic', 'underline'],
-        ['variables']
       ]
     },
     variables: {
