@@ -1,0 +1,102 @@
+/* Group container in Quill toolbar */
+.ql-variable-picker {
+    position: relative;
+  }
+  
+  /* Button */
+  .ql-variable-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    border: 1px solid rgba(0,0,0,.15);
+    background: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font: inherit;
+    min-width: 100px;
+  }
+
+  .ql-variable-button:hover {
+    background: #f7f7f7;
+  }
+
+  .ql-variable-icon {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    letter-spacing: 1px;
+    opacity: .8;
+  }
+
+  .ql-variable-label {
+    font-size: 13px;
+  }
+  
+  /* Menu panel */
+  .ql-variable-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 260px;
+    max-height: 320px;
+    overflow: auto;
+    margin-top: 6px;
+    padding: 4px 0;
+    border: 1px solid rgba(0,0,0,.15);
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.12);
+    z-index: 1000;
+  }
+  
+  /* Section title + divider */
+  .ql-variable-group-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    opacity: .6;
+    padding: 8px 12px 4px;
+  }
+
+  .ql-variable-divider {
+    height: 1px;
+    background: rgba(0,0,0,.06);
+    margin: 6px 0;
+  }
+  
+  /* Item */
+  .ql-variable-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 12px;
+    text-align: left;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    font: inherit;
+  }
+
+  .ql-variable-item:hover,
+  .ql-variable-item:focus {
+    background: #f3f6f9;
+    outline: none;
+  }
+  
+  .ql-variable-item-text .title {
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .ql-variable-item-text .desc {
+    font-size: 12px;
+    opacity: .75;
+    margin-top: 2px;
+  }
+  .ql-variable-item .code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px;
+    opacity: .8;
+    align-self: center;
+    white-space: nowrap;
+  }

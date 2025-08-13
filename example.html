@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quill Variable Picker Example</title>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        #editor {
+            height: 300px;
+            margin-bottom: 20px;
+        }
+        .info {
+            background: #f0f8ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quill Variable Picker Example</h1>
+    
+    <div class="info">
+        <h3>Instructions:</h3>
+        <ul>
+            <li>Click the "Variables" button in the toolbar to open the variable picker</li>
+            <li>Select a variable to insert it into the editor</li>
+            <li>Use keyboard navigation (arrow keys, Enter, Escape) for accessibility</li>
+        </ul>
+    </div>
+
+    <div id="editor"></div>
+
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script type="module">
+        // Import the variable picker module
+        import VariablePicker from './dist/index.js';
+
+        // Define sample variables
+        const variables = {
+            user: {
+                title: 'User Information',
+                children: {
+                    first_name: {
+                        title: 'First Name',
+                        description: 'User\'s first name'
+                    },
+                    last_name: {
+                        title: 'Last Name',
+                        description: 'User\'s last name'
+                    },
+                    email: {
+                        title: 'Email Address',
+                        description: 'User\'s email address'
+                    },
+                    phone: {
+                        title: 'Phone Number',
+                        description: 'User\'s phone number'
+                    }
+                }
+            },
+            clinic: {
+                title: 'Clinic Information',
+                children: {
+                    name: {
+                        title: 'Clinic Name',
+                        description: 'Name of the clinic'
+                    },
+                    address: {
+                        title: 'Clinic Address',
+                        description: 'Full address of the clinic'
+                    },
+                    phone: {
+                        title: 'Clinic Phone',
+                        description: 'Clinic\'s phone number'
+                    }
+                }
+            },
+            appointment: {
+                title: 'Appointment Details',
+                children: {
+                    date: {
+                        title: 'Appointment Date',
+                        description: 'Date of the appointment'
+                    },
+                    time: {
+                        title: 'Appointment Time',
+                        description: 'Time of the appointment'
+                    },
+                    duration: {
+                        title: 'Duration',
+                        description: 'Length of the appointment'
+                    }
+                }
+            }
+        };
+
+        // Initialize Quill with the variable picker
+        const quill = new Quill('#editor', {
+            theme: 'snow',
+            modules: {
+                toolbar: {
+                    container: [
+                        ['bold', 'italic', 'underline'],
+                        ['variablePicker'] // Add the variable picker to toolbar
+                    ]
+                },
+                variablePicker: {
+                    variables: variables,
+                    placeholder: 'Insert Variable',
+                    token: { open: '{{', close: '}}' }
+                }
+            },
+            placeholder: 'Start typing or insert variables using the toolbar...'
+        });
+
+        // Example: Insert a variable programmatically
+        setTimeout(() => {
+            const variablePicker = quill.getModule('variablePicker');
+            if (variablePicker) {
+                console.log('Available variables:', variablePicker.getAvailableVariables());
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
