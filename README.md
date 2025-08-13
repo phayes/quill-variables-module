@@ -216,11 +216,6 @@ The module includes default CSS styles. You can customize the appearance by over
 - `.ql-variable-group-title` - Section titles
 - `.ql-variable-divider` - Section dividers
 
-## Browser Support
-
-- Modern browsers with ES2018 support
-- Requires Quill.js v2.0.0 or higher
-
 ## Examples
 
 ### Basic Variable Insertion
