@@ -1,4 +1,4 @@
-// variable-picker.ts (Quill v2)
+// variables.ts (Quill v2)
 // prettier toolbar menu + TS fixes
 
 import "./variables.css";
@@ -39,7 +39,7 @@ const DEFAULTS: Required<Omit<VariablePickerOptions, 'variables'>> = {
   token: { open: '{{', close: '}}' },
 };
 
-class VariablePicker {
+class Variables {
   private quill: Quill;
   private options: Required<VariablePickerOptions>;
 
@@ -69,7 +69,7 @@ class VariablePicker {
     // ---- TS fix for toolbar.container ----
     const toolbar = quill.getModule('toolbar') as unknown as ToolbarLike | undefined;
     if (!toolbar || !toolbar.container) {
-      throw new Error('VariablePicker requires the toolbar module.');
+      throw new Error('Variables requires the toolbar module.');
     }
     this.toolbarEl = toolbar.container;
 
@@ -376,6 +376,6 @@ class VariablePicker {
 }
 
 // Register as a Quill module (v2)
-Quill.register('modules/variablePicker', VariablePicker);
+Quill.register('modules/variables', Variables);
 
-export default VariablePicker;
+export default Variables;

@@ -1,9 +1,9 @@
 {
-  "name": "quill-variable-picker",
+  "name": "quill-variables-module",
   "version": "1.0.0",
   "description": "A Quill.js module for inserting variables with a dropdown picker",
-  "main": "dist/variable-picker.js",
-  "types": "dist/variable-picker.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
@@ -34,10 +34,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/opticalgym/quill-variable-picker.git"
+    "url": "https://github.com/opticalgym/quill-variables-module.git"
   },
   "bugs": {
-    "url": "https://github.com/opticalgym/quill-variable-picker/issues"
+    "url": "https://github.com/opticalgym/quill-variables-module/issues"
   },
-  "homepage": "https://github.com/opticalgym/quill-variable-picker#readme"
+  "homepage": "https://github.com/opticalgym/quill-variables-module#readme"
 }

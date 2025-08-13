@@ -1,5 +1,5 @@
-export { default as VariablePicker } from './variable-picker';
-export type { VariableTree, VarNode, VariablePickerOptions } from './variable-picker';
+export { default as Variables } from './variables';
+export type { VariableTree, VarNode, VariablePickerOptions } from './variables';
 
 // Re-export the default export as default
-export { default } from './variable-picker';
+export { default } from './variables';

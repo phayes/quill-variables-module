@@ -1,4 +1,4 @@
-# Quill Variable Picker
+# Quill Variables Module
 
 A Quill.js module that adds a variable picker dropdown to the toolbar, allowing users to insert variables with customizable token formatting.
 
@@ -14,7 +14,7 @@ A Quill.js module that adds a variable picker dropdown to the toolbar, allowing 
 ## Installation
 
 ```bash
-npm install quill-variable-picker
+npm install quill-variables-module
 ```
 
 ## Usage
@@ -23,7 +23,7 @@ npm install quill-variable-picker
 
 ```typescript
 import Quill from 'quill';
-import VariablePicker from 'quill-variable-picker';
+import Variables from 'quill-variables-module';
 
 // Define your variables structure
 const variables = {
@@ -59,16 +59,16 @@ const variables = {
   }
 };
 
-// Initialize Quill with the variable picker
+// Initialize Quill with the variables module
 const quill = new Quill('#editor', {
   modules: {
     toolbar: {
       container: [
         ['bold', 'italic', 'underline'],
-        ['variablePicker'] // Add the variable picker to toolbar
+        ['variables'] // Add the variables module to toolbar
       ]
     },
-    variablePicker: {
+    variables: {
       variables: variables,
       placeholder: 'Insert Variable',
       token: { open: '{{', close: '}}' }
@@ -85,10 +85,10 @@ const quill = new Quill('#editor', {
     toolbar: {
       container: [
         ['bold', 'italic', 'underline'],
-        ['variablePicker']
+        ['variables']
       ]
     },
-    variablePicker: {
+    variables: {
       variables: variables,
       placeholder: 'Insert Variable',
       includeParentNodes: true, // Allow inserting parent nodes
@@ -101,20 +101,20 @@ const quill = new Quill('#editor', {
 ### Programmatic Usage
 
 ```typescript
-// Get the variable picker module
-const variablePicker = quill.getModule('variablePicker');
+// Get the variables module
+const variablesModule = quill.getModule('variables');
 
 // Insert a variable programmatically
-variablePicker.insert('user.first_name');
+variablesModule.insert('user.first_name');
 
 // Get all available variable paths
-const availableVars = variablePicker.getAvailableVariables();
+const availableVars = variablesModule.getAvailableVariables();
 
 // Update variables dynamically
-variablePicker.updateVariables(newVariables);
+variablesModule.updateVariables(newVariables);
 
 // Destroy the module
-variablePicker.destroy();
+variablesModule.destroy();
 ```
 
 ## API Reference
