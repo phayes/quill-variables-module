@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quill Variables Module Example</title>
     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="./dist/variables.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -38,12 +39,18 @@
 
     <div id="editor"></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    <script type="importmap">
+        {
+          "imports": {
+            "quill": "https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js",
+            "quill-variables-module": "./dist/variables.js"
+          }
+        }
+    </script>
+
     <script type="module">
         // Import the variables module
-
-        // import Variables from 'quill-variables-module'; // Uncomment this to use the module from npm
-        import Variables from './dist/index.js'; 
+        import Variables from 'quill-variables-module';
 
         // Define sample variables
         const variables = {
