@@ -18,6 +18,7 @@ export interface VariablePickerOptions {
   includeParentNodes?: boolean; // if true, parents with children are also insertable
   placeholder?: string;         // button label
   token?: { open?: string; close?: string } | ((path: string) => string);
+  icon?: string;               // SVG icon content or URL
 }
 
 type EditorRange = { index: number; length: number };
@@ -37,6 +38,7 @@ const DEFAULTS: Required<Omit<VariablePickerOptions, 'variables'>> = {
   includeParentNodes: false,
   placeholder: 'Variables',
   token: { open: '{{', close: '}}' },
+  icon: `<svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.5 5H9a2 2 0 0 0-2 2v2c0 1-.6 3-3 3 1 0 3 .6 3 3v2a2 2 0 0 0 2 2h.5m5-14h.5a2 2 0 0 1 2 2v2c0 1 .6 3 3 3-1 0-3 .6-3 3v2a2 2 0 0 1-2 2h-.5"/></svg>`,
 };
 
 class Variables {
@@ -147,8 +149,8 @@ class Variables {
     this.buttonEl.setAttribute('aria-haspopup', 'true');
     this.buttonEl.setAttribute('aria-expanded', 'false');
     this.buttonEl.setAttribute('title', this.options.placeholder);
-    // Simple icon-ish label: {{ }}
-    this.buttonEl.innerHTML = `<span class="ql-variable-icon">{{ }}</span><span class="ql-variable-label">${this.options.placeholder}</span>`;
+    // Use configurable icon
+    this.buttonEl.innerHTML = `<span class="ql-variable-icon">${this.options.icon}</span><span class="ql-variable-label">${this.options.placeholder}</span>`;
 
     // menu
     this.menuEl = document.createElement('div');

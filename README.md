@@ -92,7 +92,8 @@ const quill = new Quill('#editor', {
       variables: variables,
       placeholder: 'Insert Variable',
       includeParentNodes: true, // Allow inserting parent nodes
-      token: (path: string) => `\${${path}}` // Custom token function
+      token: (path: string) => `\${${path}}`, // Custom token function
+      icon: '<svg>...</svg>' // Custom SVG icon
     }
   }
 });
@@ -130,6 +131,7 @@ interface VariablePickerOptions {
     open?: string;                   // Opening token (default: '{{')
     close?: string;                  // Closing token (default: '}}')
   } | ((path: string) => string);    // Or custom function
+  icon?: string;                     // Optional: Custom SVG icon (default: curly braces icon)
 }
 ```
 
@@ -144,6 +146,25 @@ interface VarNode {
   children?: VariableTree;           // Nested variables
 }
 ```
+
+## Icon Customization
+
+The module uses a curly braces SVG icon by default. You can customize it by providing your own SVG:
+
+```typescript
+const quill = new Quill('#editor', {
+  modules: {
+    variables: {
+      variables: variables,
+      icon: `<svg width="16" height="16" viewBox="0 0 24 24">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+      </svg>`
+    }
+  }
+});
+```
+
+The icon should be an SVG element with appropriate sizing (recommended 16x16 or 24x24 viewBox). The SVG will inherit the text color via `currentColor`.
 
 ## Styling
 
