@@ -1,6 +1,6 @@
 # Quill Variables Module
 
-A Quill.js module that adds a variable picker dropdown to the toolbar, allowing users to insert variables with customizable token formatting.
+A Quill.js module that adds a {{variable}} / placeholder picker to the toolbar, allowing users to insert variables / placeholders for use in templates.
 
 ## Features
 
